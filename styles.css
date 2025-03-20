@@ -1,0 +1,97 @@
+/* ⭐ গ্লোবাল স্টাইলস */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+/* ⭐ প্রোডাক্ট সেকশন (গ্রিড ভিউ সব ডিভাইসের জন্য) */
+.products {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+/*.products h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}*/
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* ২ কলাম গ্রিড */
+    gap: 10px;
+    justify-content: center;
+    padding: 10px;
+}
+
+.product {
+    background: #fff;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    text-align: center;
+}
+
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.product img {
+    width: 100%;
+    max-width: 180px;
+    border-radius: 10px;
+}
+
+.product h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product p {
+    font-size: 16px;
+    color: #27AE60;
+}
+
+.discount {
+    text-decoration: line-through;
+    color: red;
+    margin-left: 5px;
+}
+
+.buy-now {
+    background: #F39C12;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.buy-now:hover {
+    background: #27AE60;
+}
+
+/* ⭐ সব ডিভাইসের জন্য গ্রিড স্থির রাখা হবে */
+@media (max-width: 768px) {
+    .product-list {
+        grid-template-columns: repeat(3, 1fr); /* ২ কলাম গ্রিড */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-list {
+        grid-template-columns: repeat(3, 1fr); /* ২ কলাম গ্রিড */
+    }
+}
