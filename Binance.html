@@ -17,20 +17,22 @@
 <div class="rate-container">
     <h3>Description</h3>
     <div>
-        <span class="rate">৳350</span>
-        <span class="discount">৳550</span>
+        <span class="rate">৳380</span>
+        <span class="discount">৳520</span>
     </div>
 </div>
 <div id="description">
     <ul>
-        <li>✅ Email Verified.</li>
-        <li>✅ UK Number Verified.</li>
-        <li>✅ UK Bank / Card Verified.</li>
-        <li>✅ UK Photo ID Verified.</li>
-        <li>✅ With UK Bank Statement.</li>
-        <li>✅ With One Year UK Number Free.</li>
-        <li>✅ With UK Photo ID.</li>
-        <li>✅ With Extra Facility Support Xoom, Wise, Payoneer (optional).</li>
+        <li>🔹 100% Verified (KYC, Email) </li>
+<li>🔹 Fully Set Up & Ready to Use </li>
+<li>🔹 Supports Spot, Futures & P2P Trading </li>
+<li>🔹 Secure & Hassle-Free Transactions</li>
+<li>🔹 No Restrictions – Global Access</li>
+<li>🔹 Instant Delivery After Purchase</li>
+<li>🔹 High-Quality & Safe Accounts</li>
+<li>🔹 Affordable Pricing & Bulk Orders Available</li>
+<li>🔹 24/7 Customer Support</li>
+<li>🔹 Order Now & Start Instantly! 🚀</li>
     </ul>
 </div>
 <button id="toggleButton">আরো দেখুন...</button>
@@ -52,7 +54,7 @@
 
       <!-- পণ্যের দাম ও প্রোমোকোড -->
       <div class="input-group">
-        <input type="text" id="productPrice" value="350 BDT" disabled> <!-- 💲Rate -->
+        <input type="text" id="productPrice" value="380 BDT" disabled> <!-- 💲Rate -->
         <input type="text" id="promoCode" placeholder="Enter Promo Code" oninput="applyPromo()">
       </div>
 
@@ -111,7 +113,7 @@
       };
 
       const promoCode = promoCodeInput.value.trim(); // ইউজারের প্রোমোকোড ইনপুট
-      let originalPrice = 350; // ডিফল্ট প্রোডাক্টের মূল্য
+      let originalPrice = 380; // ডিফল্ট প্রোডাক্টের মূল্য
 
       // যদি প্রোমোকোড ম্যাচ করে তাহলে ডিসকাউন্ট করবে
       if (promoCode in promoCodes) {
@@ -119,7 +121,7 @@
         const newPrice = originalPrice - discount; // নতুন মূল্য
         productPriceInput.value = newPrice + " BDT";
       } else {
-        productPriceInput.value = "350 BDT"; // প্রোমোকোড ভুল হলে আগের দাম দেখাবে
+        productPriceInput.value = "380 BDT"; // প্রোমোকোড ভুল হলে আগের দাম দেখাবে
       }
     }
 
