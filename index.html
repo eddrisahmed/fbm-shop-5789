@@ -5,44 +5,143 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Accounta Card </title>
     <link rel="stylesheet" href="styles.css"> <!-- CSS ফাইল লিংক -->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+ <!--=========== BOXICONS ============-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  
 </head>
 <body>
 
-    <!-- ⭐ প্রোডাক্ট সেকশন -->
-    <section class="products">
-        <h2>🔥 All Accounts</h2>
+<!--[========== search bar ============]-->
+  
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search apps...">
+        <div class="loading-animation" id="loading-animation"></div>
+        <button id="voice-search-btn">
+            <i class="fas fa-microphone"></i>
+        </button>
+    </div>
+
+    <!-- Voice command animation -->
+    <div id="voice-animation" class="voice-animation">
+        <div class="voice-wave"></div>
+        <div class="voice-wave"></div>
+        <div class="voice-wave"></div>
+    </div>
+
+    <!-- Not Found Popup -->
+    <div id="not-found-popup" class="not-found-popup">No matching apps found</div>
+
+    <!-- Minimum character message -->
+    <div id="min-char-popup" class="not-found-popup">Please type at least 1 character</div>
+
+
+
+
+<!--[slider container]-->
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide"><img src="https://i.ibb.co.com/pvGmvwG0/Fbm.png" alt="Slide 1"></div>
+            <div class="slide"><img src="https://i.ibb.co.com/yBXY3Svm/Fbm-1.png" alt="Slide 2"></div>
+            <div class="slide"><img src="https://i.ibb.co.com/j9cm9Zq0/20250321-113048.jpg" alt="Slide 3"></div>
+        </div>
+        <button class="prev" onclick="prevSlide()">❮</button>
+        <button class="next" onclick="nextSlide()">❯</button>
+    </div> <br><br>
+
+
+
+
+
+<!-- ⭐ VPN প্রোডাক্ট সেকশন 👋👋-->
+<section class="products ">
+<!--<div  data-title=" Premium VPN " >  <h2>🔥 All Premium VPN </h2> </div> -->
+    <div class="product-list">
+        <div class="product" data-title=" Express VPN ">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/ExpressVPN-logo.png" alt="Product">
+      <div class="vpnEd">7D Hot🔥</div>
+            <h5>Express Vpn</h5>  
+            <p>৳35<span class="discount">৳65</span></p>
+      <button class="buy-now" onclick="window.location.href='ExpressVpn.html';">Buy Now</button>
+        </div>
+  <div class="product" data-title="Nord VPN">
+            <img src="https://www.apkmirror.com/wp-content/themes/APKMirror/ap_resize/ap_resize.php?src=https://downloadr2.apkmirror.com/wp-content/uploads/2024/07/25/66a88f1906ae4_com.nordvpn.android.png" alt="Product">
+     <div class="vpnEd">1M</div>
+            <h5>Nord VPN</h5>
+            <p>৳60 <span class="discount">৳110</span></p>
+            <button class="buy-now" onclick="window.location.href='NordVpn.html';">Buy Now</button>
+            </div>
+
+<div class="product" data-title=" X VPN">
+                <img src="https://martsbd.com/wp-content/uploads/2023/09/X-VPN-Premium-Subscription.png" alt="Product">
+   <div class="vpnEd">7D</div>
+              <h5>X VPN</h5>
+                <p>৳20<span class="discount">৳40</span></p>
+<button class="buy-now" onclick="window.location.href='XVpn.html';">Buy Now</button>
+            </div>
+            <div class="product" data-title="HMA VPN">
+                <img src="https://shopallpremium.com/wp-content/uploads/2022/02/HMA-LOG.png" alt="Product">
+<div class="vpnEd">10D</div>
+              <h5>HMA VPN</h5>
+                <p>৳35 <span class="discount">৳60</span></p>
+ <button class="buy-now" onclick="window.location.href='HMAVpn.html';">Buy Now</button>
+            </div>
+            <div class="product" data-title="Mysterium VPN">
+                <img src="https://martsbd.com/wp-content/uploads/2024/07/mysteriumvpn_46250_logo_1699887807_qdmaa.webp" alt="Product">
+ <div class="vpnEd">15D</div>
+              <h5>Mysterium</h5>
+                <p>৳35 <span class="discount">৳70</span></p>
+<button class="buy-now" onclick="window.location.href='MysteriumVpn.html';">Buy Now</button>
+            </div>
+            <div class="product" data-title="Ip Vanish  VPN">
+                <img src="https://martsbd.com/wp-content/uploads/2023/02/IPVanish-VPN-1-Year-Subscription.jpg" alt="Product">
+<div class="vpnEd">3M Hot🔥</div>
+              <h5>IP Vanish VPN</h5>
+                <p>৳250 <span class="discount">৳380</span></p>
+<button class="buy-now" onclick="window.location.href='ipVanishVpn.html';">Buy Now</button>
+            </div>
+        </div>
+
+</br>
+
+    <!-- ⭐ Accounts প্রোডাক্ট সেকশন -->
+    <section class="products" data-title=" Accoutn">
+    <!--<h2 >🔥 All Accounts</h2> -->
         <div class="product-list">
-            <div class="product">
-                <img src="https://images.seeklogo.com/logo-png/32/1/binance-coin-bnb-logo-png_seeklogo-325081.png" alt="Product">
+            <div class="product" data-title=" Binance">
+                <img src="https://codeload.com/files/Pages/logo/binance.png" alt="Product">
+   <div class="pHot">Hot🔥</div>
               <h5>Binance</h5>  
                 <p>৳450 <span class="discount">৳780</span></p>
 <button class="buy-now" onclick="window.location.href='Binance.html';">Buy Now</button>
             </div>
-            <div class="product">
+            <div class="product" data-title=" Bybite">
                 <img src="https://images.seeklogo.com/logo-png/41/1/bybit-logo-png_seeklogo-412982.png" alt="Product">
               <h5>Bybite</h5>
                 <p>৳420 <span class="discount">৳480</span></p>
 <button class="buy-now" onclick="window.location.href='Bybit.html';">Buy Now</button>
             </div>
-            <div class="product">
+            <div class="product" data-title="Bitget">
                 <img src="https://cryptologos.cc/logos/bitget-token-new-bgb-logo.png" alt="Product">
               <h5>Bitget</h5>
                 <p>৳359<span class="discount">৳520</span></p>
 <button class="buy-now" onclick="window.location.href='Bitget.html';">Buy Now</button>
             </div>
-            <div class="product">
+            <div class="product" data-title=" KuCoin ">
                 <img src="https://www.apkmirror.com/wp-content/themes/APKMirror/ap_resize/ap_resize.php?src=https://downloadr2.apkmirror.com/wp-content/uploads/2021/09/26/613ac8ba3b67d.png" alt="Product">
+<div class="pHot">Hot🔥</div>
               <h5>KuCoin</h5>
                 <p>৳650 <span class="discount">৳683</span></p>
  <button class="buy-now" onclick="window.location.href='Bitget.html';">Buy Now</button>
             </div>
-            <div class="product">
+            <div class="product" data-title="OKX ">
                 <img src="https://altcoinsbox.com/wp-content/uploads/2023/03/okx-logo-black-and-white-600x600.webp" alt="Product">
               <h5> OKX Wallet</h5>
                 <p>৳270 <span class="discount">৳483</span></p>
 <button class="buy-now" onclick="window.location.href='OKX.html';">Buy Now</button>
             </div>
-            <div class="product">
+            <div class="product" data-title="TokenPocket">
                 <img src="https://www.apkmirror.com/wp-content/themes/APKMirror/ap_resize/ap_resize.php?src=https://downloadr2.apkmirror.com/wp-content/uploads/2024/08/95/66d7cd931f3bc_vip.mytokenpocket.png" alt="Product">
               <h5>TokenPocket</h5>
                 <p>৳250 <span class="discount">৳380</span></p>
@@ -50,6 +149,6 @@
             </div>
         </div>
     </section>
-
+<script src="script.js"></script>
 </body>
 </html>
