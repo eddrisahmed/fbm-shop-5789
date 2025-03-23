@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium VPN</title>
+    <link rel="stylesheet" href="allPinfo.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="banner">
+              <a href="https://eddrisahmed.github.io/fbm-shop-5789/" class="banner-button">Back</a>
+
+<div class="banner-container">
+    <div class="small-images">
+        <img src="https://imag.malavida.com/mvimgbig/download-fs/expressvpn-21101-1.jpg" class="small-img">
+        <img src="https://imag.malavida.com/mvimgbig/download-fs/expressvpn-21101-2.jpg" class="small-img">
+        <img src="https://imag.malavida.com/mvimgbig/download-fs/expressvpn-21101-3.jpg" class="small-img">
+        <img src="https://imag.malavida.com/mvimgbig/download-fs/expressvpn-21101-10.jpg" class="small-img">
+    </div>
+    <div class="big-image">
+        <img src="https://www.guidingtech.com/wp-content/uploads//Fix-Epic-Games-Not-Sending-a-Security-Code-4-768x799.jpg" id="mainImage">
+    </div>
+</div>
+
+  <!-- <img src="https://images.seeklogo.com/logo-png/32/1/binance-coin-bnb-logo-png_seeklogo-325081.png" alt="Banner"> -->
+        </div>
+        <div class="content">
+            <h1> Expreas Premium Vpn </h1>
+            <p class="info"><b>Type:</b> Premium &nbsp;&nbsp; <b>Stock:</b> Available &nbsp;&nbsp; <b>Date:</b> 7Day...</p>
+<div class="rate-container">
+    <h3>Description</h3>
+    <div>
+        <span class="rate">৳40</span>
+        <span class="discount">৳120</span>
+    </div>
+</div>
+<div id="description">
+    <ul>
+
+
+ExpressVPN বিশ্বের অন্যতম জনপ্রিয় ও দ্রুতগতির VPN পরিষেবা, যা আপনাকে সীমাহীন ইন্টারনেট অ্যাক্সেস এবং শক্তিশালী সুরক্ষা প্রদান করে। আমাদের প্রিমিয়াম সাবস্ক্রিপশন নেওয়ার মাধ্যমে আপনি পাবেন— 
+<br><br>
+
+<li>🔹4K streaming support </li>
+<li>🔹AES 256-bit encryption</li>
+<li>🔹kill switch</li>
+<li>🔹DNS & IP leak protection</li>
+<li>🔹liUltra-fast & secure Rust
+architecture </li>
+<li>🔹Free data scanner tools </li>
+<li>🔹Free eSIM data included</li>
+<li>🔹TrustedServer Technology</li>
+<li>🔹Parental Controls</li>
+<li>🔹Aircove built-in VPN routers (purchased separately)</li>
+
+ExpressVPN-এর প্রিমিয়াম সাবস্ক্রিপশন নিয়ে নিশ্চিন্তে ও দ্রুতগতিতে ইন্টারনেট ব্রাউজিং শুরু করুন!
+
+অর্ডার করতে এখনই আমাদের সাথে যোগাযোগ করুন!
+
+
+
+    </ul>
+</div>
+<button id="toggleButton">আরো দেখুন...</button>
+        </div>
+    </div>
+          <div class="form-container">
+   <!-- <h2>Order Form</h2>-->
+    <form id="orderForm">
+
+      <!-- পণ্যের নাম ও কান্ট্রি টাইপ -->
+      <div class="input-group">
+        <input type="text" id="productName" value="Expreas VPN" disabled>
+        <select id="countryType">
+          <option disabled value="3D">3 Days</option>
+          <option value="7 Days">7 Days</option>
+          <option disabled value="1 Month">1 Month</option>
+        </select>
+      </div>
+
+      <!-- পণ্যের দাম ও প্রোমোকোড -->
+      <div class="input-group">
+        <input type="text" id="productPrice" value="40 BDT" disabled> <!-- 💲Rate -->
+        <input type="text" id="promoCode" placeholder="Enter Promo Code" oninput="applyPromo()">
+      </div>
+
+      <!-- Telegram Username এবং ফোন নম্বর -->
+      <div class="input-group">
+        <input type="text" id="tgUsername" placeholder="Tg Username">
+        <input type="text" id="phoneNumber" placeholder="Phone Number">
+      </div>
+
+      <!-- পেমেন্ট অপশন -->
+      <div class="Pinput-group full-width">
+        <select id="paymentOption" onchange="togglePaymentBox()">
+          <option value="later">পরে পেমেন্ট করবো!! </option>
+          <option value="now">এখন পেমেন্ট করবো!! </option>
+        </select>
+      </div>
+
+      <!-- পেমেন্ট সেকশন -->
+      <div id="paymentBox" class="hidden">
+        <p class="payment-info">⚡ টাকা SendMoney করে একাউন্টে নাম্বার এবং ট্রাঞ্জেকশন আইডি নিচে দিন!! Bkash, Nagad: <strong>01310489475</strong></p>
+        <input type="text" id="paymentNumber" placeholder="Your Number">
+        <input type="text" id="transactionId" placeholder="Transaction ID">
+      </div>
+
+      <!-- সাবমিট বাটন -->
+      <button type="submit">✅ অর্ডার কনফার্ম</button>
+    </form>
+  </div>
+
+  <!-- Success Popup -->
+  <div id="popup" class="hidden">
+    <p id="popupText"></p>
+  </div>
+    
+    
+    
+    <script>
+
+    // ✅ ফর্ম ইনপুট ফিল্ড
+    const form = document.getElementById('orderForm');
+    const productNameInput = document.getElementById('productName');
+    const countryTypeInput = document.getElementById('countryType');
+    const productPriceInput = document.getElementById('productPrice');
+    const promoCodeInput = document.getElementById('promoCode');
+    const tgUsernameInput = document.getElementById('tgUsername');
+    const phoneNumberInput = document.getElementById('phoneNumber');
+    const paymentOption = document.getElementById('paymentOption');
+    const paymentBox = document.getElementById('paymentBox');
+
+    // ✅ প্রোমোকোড অ্যাপ্লাই করার ফাংশন
+    function applyPromo() {
+      const promoCodes = {
+        "ExprcFbm": 5, 
+        "asdf100": 100, 
+        "asdf150": 150 
+      };
+
+      const promoCode = promoCodeInput.value.trim(); // ইউজারের প্রোমোকোড ইনপুট
+      let originalPrice = 40; // ডিফল্ট প্রোডাক্টের মূল্য
+
+      // যদি প্রোমোকোড ম্যাচ করে তাহলে ডিসকাউন্ট করবে
+      if (promoCode in promoCodes) {
+        const discount = promoCodes[promoCode]; // প্রোমোকোড অনুযায়ী ডিসকাউন্ট
+        const newPrice = originalPrice - discount; // নতুন মূল্য
+        productPriceInput.value = newPrice + " BDT";
+      } else {
+        productPriceInput.value = "40 BDT"; // প্রোমোকোড ভুল হলে আগের দাম দেখাবে
+      }
+    }
+
+    // ✅ পেমেন্ট অপশন অনুযায়ী পেমেন্ট বক্স দেখানো/লুকানোর ফাংশন
+    function togglePaymentBox() {
+      if (paymentOption.value === 'now') {
+        paymentBox.classList.remove('hidden');
+      } else {
+        paymentBox.classList.add('hidden');
+      }
+    }
+
+    // ✅ Popup Notification দেখানোর ফাংশন
+    function showPopup(message, isError = false) {
+      const popup = document.getElementById('popup');
+      popup.textContent = message; // পপআপ মেসেজ
+      popup.classList.remove('hidden'); // পপআপ দেখাবে
+      popup.classList.toggle('error', isError); // যদি error হয় তাহলে red color
+      setTimeout(() => popup.classList.add('hidden'), 3000); // ৩ সেকেন্ড পরে লুকাবে
+    }
+
+    // ✅ ফর্ম সাবমিট করার সময় টেলিগ্রামে ডাটা সেন্ডের ফাংশন
+    form.addEventListener('submit', async function(event) {
+      event.preventDefault(); // ফর্ম রিফ্রেশ হওয়া বন্ধ করা
+      
+      const tgUsername = tgUsernameInput.value.trim(); 
+      const phoneNumber = phoneNumberInput.value.trim();
+      const paymentNumber = document.getElementById('paymentNumber')?.value || 'N/A';
+      const transactionId = document.getElementById('transactionId')?.value || 'N/A';
+
+      // Telegram username চেক
+      if (!tgUsername.startsWith('@') || tgUsername.includes(' ')) {
+        showPopup('❌ Telegram Username সঠিকভাবে দিন!', true);
+        return;
+      }
+
+      // ফোন নম্বর চেক
+      if (phoneNumber && (!phoneNumber.startsWith('01') || phoneNumber.length !== 11 || isNaN(phoneNumber))) {
+        showPopup('❌ ফোন নম্বর সঠিকভাবে দিন!', true);
+        return;
+      }
+
+      // পেমেন্ট নাম্বার এবং ট্রানজেকশন আইডি চেক (যদি payment অপশন 'now' হয়)
+      if (paymentOption.value === 'now' && (!paymentNumber || !transactionId)) {
+        showPopup('❌ পেমেন্ট নাম্বার এবং ট্রানজেকশন আইডি দিন!', true);
+        return;
+      }
+
+      // ✅ টেলিগ্রামে সেন্ড করার মেসেজ
+      const message = `
+✅ **নতুন অর্ডার:**  
+🛍️ পণ্যের নাম: ${productNameInput.value}  
+🌐 কান্ট্রি টাইপ: ${countryTypeInput.value}  
+💰 মূল্য: ${productPriceInput.value}  
+🎁 প্রোমোকোড: ${promoCodeInput.value || 'N/A'}  
+👤 Telegram Username: ${tgUsername}  
+📱 ফোন নম্বর: ${phoneNumber || 'N/A'}  
+💳 পেমেন্ট নাম্বার: ${paymentNumber}  
+🔗 ট্রানজেকশন আইডি: ${transactionId}  
+      `;
+
+      const botToken = "7734169736:AAGDFW2mVkNSLrrPClDohEfNE0whlwmBiuE";
+      const chatIdforbot = "-1002585110664";
+
+      // ✅ Telegram API দিয়ে ডাটা সেন্ড
+      const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatIdforbot}&text=${encodeURIComponent(message)}`);
+
+      if (response.ok) {
+        showPopup('🎉 অর্ডার সফলভাবে সম্পন্ন হয়েছে!');
+        setTimeout(() => {
+          window.location.href = "https://t.me/mdbyoc";
+        }, 3000);
+      } else {
+        showPopup('❌ টেলিগ্রামে পাঠানো যায়নি!', true);
+      }
+    });
+    
+    // ✅ "আরো দেখুন" ও "কম দেখুন" ফাংশন
+    const toggleButton = document.getElementById('toggleButton');
+    const description = document.getElementById('description');
+
+    toggleButton.addEventListener('click', () => {
+      // যদি বক্সটি 150px হয়, তাহলে এক্সপ্যান্ড করবে
+      if (description.style.maxHeight === '150px') {
+        description.style.maxHeight = '1000px'; // সব কন্টেন্ট দেখাবে
+        toggleButton.textContent = 'কম দেখুন...'; // টেক্সট পরিবর্তন
+      } else {
+        description.style.maxHeight = '150px'; // আগের অবস্থায় ফেরত
+        toggleButton.textContent = 'আরো দেখুন...'; // টেক্সট রিসেট
+      }
+    });
+
+
+let smallImages = document.querySelectorAll('.small-img'); // সব ছোট ইমেজ
+let mainImage = document.getElementById('mainImage');
+let currentIndex = 0;
+
+// HTML থেকে সব ছোট ইমেজের সোর্স নিয়ে অ্যারে তৈরি করা হলো
+let images = Array.from(smallImages).map(img => img.src);
+
+// অটোমেটিক স্লাইড ফাংশন
+function autoSlide() {
+    currentIndex = (currentIndex + 1) % images.length;
+    mainImage.src = images[currentIndex];
+}
+
+// ইউজার ক্লিক করলে ইমেজ পরিবর্তনের ফাংশন
+smallImages.forEach((img, index) => {
+    img.addEventListener("click", function () {
+        mainImage.src = img.src;
+        currentIndex = index; // যাতে অটোমেটিক স্লাইড ঠিকভাবে কাজ করে
+    });
+});
+
+// প্রত0 ৩ সেকেন্ড পর ইমেজ পরিবর্তন হবে
+let slideInterval = setInterval(autoSlide, 1500);
+
+// ক্লিক করলে স্লাইড বন্ধ করে আবার চালু করবে
+smallImages.forEach(img => {
+    img.addEventListener("click", function () {
+        clearInterval(slideInterval); // ক্লিক করলে স্লাইড বন্ধ হবে
+        slideInterval = setInterval(autoSlide, 4000); // আবার চালু হবে
+    });
+});
+     
+    </script>
+</body>
+</html>
