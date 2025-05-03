@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile IP Request</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4bb543;
+            --error: #ff4444;
+            --warning: #ffbb33;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7ff;
+            min-height: 100vh;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .form-container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .form-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .form-header h2 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+        
+        .form-body {
+            padding: 20px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .form-group {
+            flex: 1;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 14px;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: #f8f9fa;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 15px;
+        }
+        
+        .file-upload {
+            margin: 20px 0;
+        }
+        
+        .file-upload-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+        }
+        
+        .file-upload-label i {
+            font-size: 30px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .file-upload-label span {
+            font-size: 13px;
+            color: var(--gray);
+        }
+        
+        .file-name {
+            margin-top: 10px;
+            font-size: 13px;
+            color: var(--dark);
+            display: none;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        /* Stylish Alert System */
+        .alert-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 100%;
+            max-width: 350px;
+            z-index: 1000;
+        }
+        
+        .alert {
+            padding: 18px 20px;
+            border-radius: 12px;
+            color: white;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transform: translateX(150%);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .alert.show {
+            transform: translateX(0);
+        }
+        
+        .alert.success {
+            background: linear-gradient(135deg, rgba(75, 181, 67, 0.9), rgba(67, 160, 71, 0.9));
+        }
+        
+        .alert.error {
+            background: linear-gradient(135deg, rgba(255, 68, 68, 0.9), rgba(200, 50, 50, 0.9));
+        }
+        
+        .alert.warning {
+            background: linear-gradient(135deg, rgba(255, 187, 51, 0.9), rgba(230, 170, 50, 0.9));
+            color: var(--dark);
+        }
+        
+        .alert-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .alert-message {
+            flex: 1;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .alert-close {
+            margin-left: 15px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+            flex-shrink: 0;
+        }
+        
+        .alert-close:hover {
+            opacity: 1;
+        }
+        
+        .alert-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .alert-progress-bar {
+            height: 100%;
+            background-color: white;
+            width: 100%;
+            animation: progressBar 5s linear forwards;
+        }
+        
+        @keyframes progressBar {
+            0% { width: 100%; }
+            100% { width: 0%; }
+        }
+        
+        /* Popup Message */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .popup-overlay.active {
+            display: flex;
+        }
+        
+        .popup-box {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .popup-icon {
+            font-size: 60px;
+            color: var(--success);
+            margin-bottom: 20px;
+            text-shadow: 0 3px 10px rgba(75, 181, 67, 0.3);
+        }
+        
+        .popup-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .popup-message {
+            font-size: 15px;
+            color: var(--gray);
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        
+        .popup-btn {
+            padding: 12px 25px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(67, 97, 238, 0.3);
+        }
+        
+        .popup-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 600px) {
+            .alert-container {
+                max-width: 90%;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 10px;
+                right: auto;
+            }
+            
+            .alert {
+                transform: translateY(-150%);
+                padding: 15px;
+            }
+            
+            .alert.show {
+                transform: translateY(0);
+            }
+            
+            .popup-box {
+                padding: 20px;
+            }
+            
+            .popup-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="alert-container" id="alertContainer"></div>
+    
+    <div class="form-container">
+        <div class="form-header">
+            <h2>Free IP Request</h2>
+            <p>Fill the form to get your dedicated IP</p>
+        </div>
+        
+        <div class="form-body" id="formBody">
+            <form id="ipRequestForm">
+                <!-- Row 1: UID & Username -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telegramId">Telegram UID</label>
+                        <input type="number" id="telegramId" placeholder="9-11 digits" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telegramUsername">Username</label>
+                        <input type="text" id="telegramUsername" placeholder="@username" required>
+                    </div>
+                </div>
+                
+                <!-- Row 2: Country & HTTPS -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <select id="country" required>
+                            <option value="">Select</option>
+                            <option value="USA">USA</option>
+                            <option value="UK">UK</option>
+                            <option value="Germany">Germany</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="httpsType">HTTPS Type</label>
+                        <select id="httpsType" required>
+                            <option value="">Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Row 3: Secret Code & Member Add -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="secretCode">Secret Code</label>
+                        <input type="text" id="secretCode" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="totalMembers">Member Add</label>
+                        <input type="number" id="totalMembers" min="1" required>
+                    </div>
+                </div>
+                
+                <!-- File Upload -->
+                <div class="file-upload">
+                    <label>Upload Screen Record (Max 5 mins)</label>
+                    <div class="file-upload-label" id="fileUploadLabel">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Click to upload video</span>
+                        <div class="file-name" id="fileName"></div>
+                    </div>
+                    <input type="file" id="screenRecording" accept="video/*" style="display: none;" required>
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> Request IP
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Popup Message -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-box">
+            <div class="popup-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="popup-title">
+                Request Submitted!
+            </div>
+            <div class="popup-message">
+                Your IP request has been received with the video. We'll contact you shortly on Telegram.
+            </div>
+            <button class="popup-btn" id="closePopupBtn">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Telegram Bot Configuration
+        const BOT_TOKEN = '7673657711:AAHVLLBUQUyW4de_qrZsy2L3Hcj3Siav3kY'; // Replace with your bot token
+        const CHAT_ID = '7437789145'; // Replace with your chat ID
+        
+        // Stylish Alert Function
+        function showAlert(type, message) {
+            const container = document.getElementById('alertContainer');
+            const alert = document.createElement('div');
+            alert.className = `alert ${type}`;
+            
+            let icon;
+            if (type === 'success') icon = '<i class="fas fa-check-circle"></i>';
+            else if (type === 'error') icon = '<i class="fas fa-exclamation-circle"></i>';
+            else icon = '<i class="fas fa-exclamation-triangle"></i>';
+            
+            alert.innerHTML = `
+                <div class="alert-icon">${icon}</div>
+                <div class="alert-message">${message}</div>
+                <div class="alert-close"><i class="fas fa-times"></i></div>
+                <div class="alert-progress"><div class="alert-progress-bar"></div></div>
+            `;
+            
+            container.appendChild(alert);
+            
+            // Show alert
+            setTimeout(() => {
+                alert.classList.add('show');
+            }, 10);
+            
+            // Close button
+            alert.querySelector('.alert-close').addEventListener('click', () => {
+                alert.classList.remove('show');
+                setTimeout(() => {
+                    container.removeChild(alert);
+                }, 400);
+            });
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                alert.classList.remove('show');
+                setTimeout(() => {
+                    container.removeChild(alert);
+                }, 400);
+            }, 5000);
+        }
+        
+        // File Upload Handling
+        const fileInput = document.getElementById('screenRecording');
+        const fileLabel = document.getElementById('fileUploadLabel');
+        const fileName = document.getElementById('fileName');
+        
+        fileLabel.addEventListener('click', () => fileInput.click());
+        
+        fileInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                const file = this.files[0];
+                
+                // Check if file is video
+                if (file.type.startsWith('video/')) {
+                    const video = document.createElement('video');
+                    video.preload = 'metadata';
+                    
+                    video.onloadedmetadata = function() {
+                        window.URL.revokeObjectURL(video.src);
+                        if (video.duration > 300) { // 5 minutes
+                            showAlert('error', 'Video must be 5 minutes or less');
+                            fileInput.value = '';
+                            fileName.style.display = 'none';
+                        } else {
+                            fileName.textContent = file.name;
+                            fileName.style.display = 'block';
+                        }
+                    };
+                    
+                    video.src = URL.createObjectURL(file);
+                } else {
+                    showAlert('error', 'Please upload a video file');
+                    fileInput.value = '';
+                }
+            }
+        });
+        
+        // Form Submission
+        const form = document.getElementById('ipRequestForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const popupOverlay = document.getElementById('popupOverlay');
+        const closePopupBtn = document.getElementById('closePopupBtn');
+        
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Validate Telegram ID
+            const telegramId = document.getElementById('telegramId').value;
+            if (telegramId.length < 9 || telegramId.length > 11) {
+                showAlert('error', 'Telegram UID must be between 9-11 digits');
+                return;
+            }
+            
+            // Validate file
+            if (!fileInput.files.length) {
+                showAlert('error', 'Please upload screen recording video');
+                return;
+            }
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Prepare form data
+                const formData = new FormData();
+                formData.append('chat_id', CHAT_ID);
+                formData.append('caption', `New IP Request:\n\n` +
+                    `UID: ${telegramId}\n` +
+                    `Username: ${document.getElementById('telegramUsername').value}\n` +
+                    `Country: ${document.getElementById('country').value}\n` +
+                    `HTTPS: ${document.getElementById('httpsType').value}\n` +
+                    `Secret Code: ${document.getElementById('secretCode').value}\n` +
+                    `Members: ${document.getElementById('totalMembers').value}`);
+                formData.append('video', fileInput.files[0]);
+                
+                // Send to Telegram Bot
+                const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendVideo`, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    // Show success popup
+                    popupOverlay.classList.add('active');
+                    
+                    // Clear form
+                    form.reset();
+                    fileName.style.display = 'none';
+                    
+                    // Keep button disabled
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Request Sent';
+                } else {
+                    throw new Error('Failed to send to Telegram');
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('error', 'Failed to submit request. Please try again.');
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Request IP';
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // Close popup
+        closePopupBtn.addEventListener('click', function() {
+            popupOverlay.classList.remove('active');
+        });
+    </script>
+</body>
+      </html>
