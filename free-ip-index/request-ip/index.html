@@ -373,9 +373,13 @@
                         <label for="country">Country</label>
                         <select id="country" required>
                             <option value="">Select</option>
-                            <option value="USA">USA</option>
-                            <option value="UK">UK</option>
+                            <option value="US">United States</option>
+                            <option value="Brazil">Brazil</option>
+                            <option value="Canada">Canada</option>
                             <option value="Germany">Germany</option>
+                            <option value="India">India</option>
+                            <option value="Singapore">Singapore</option>
+                            <option value="Pakistan">Pakistan</option>
                         </select>
                     </div>
                     
@@ -385,6 +389,7 @@
                             <option value="">Select</option>
                             <option value="Yes">Yes</option>
                             <option value="No">No</option>
+                            <option value="Any">Any</option>
                         </select>
                     </div>
                 </div>
@@ -393,12 +398,12 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="secretCode">Secret Code</label>
-                        <input type="text" id="secretCode" required>
+                        <input type="number" id="secretCode" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="totalMembers">Member Add</label>
-                        <input type="number" id="totalMembers" min="1" required>
+                        <label for="totalMembers">Today</label>
+                        <input type="number" id="totalMembers" min="3" required>
                     </div>
                 </div>
                 
@@ -557,7 +562,7 @@
                     `Country: ${document.getElementById('country').value}\n` +
                     `HTTPS: ${document.getElementById('httpsType').value}\n` +
                     `Secret Code: ${document.getElementById('secretCode').value}\n` +
-                    `Members: ${document.getElementById('totalMembers').value}`);
+                    `Today: ${document.getElementById('totalMembers').value}`);
                 formData.append('video', fileInput.files[0]);
                 
                 // Send to Telegram Bot
